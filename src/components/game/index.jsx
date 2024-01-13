@@ -1,11 +1,17 @@
 import React, { useRef, useState } from 'react'
 import { GameContainer, Letter, LetterContaainer } from './style'
 import { GameForm } from './style'
+import Dashboard from '../Dashboard/index'
 
 const Game = ({ verifyLetter,pickedCategory,pickedWord,letters,guessedLetters,wrongLetters,guesses,score,}) => {
 
   const [letter,setLetter] = useState('')
   const letterInputRef = useRef(null)
+  const [togglePessoa1, setTogglePessoa1] = useState(false)
+  const [togglePessoa2, setTogglePessoa2] = useState(false)
+  const [togglePessoa3, setTogglePessoa3] = useState(false)
+
+  const quemEOPica = 'Falcão'
 
   const handlySubmit = (e) => {
     e.preventDefault()
@@ -52,6 +58,16 @@ const Game = ({ verifyLetter,pickedCategory,pickedWord,letters,guessedLetters,wr
           <span key={i}>{letter}, </span>
         ))}
       </div>
+
+      <div style={{display: 'flex'}}>
+        <button onClick={() => setTogglePessoa1(!togglePessoa1)}>P1</button>
+        <button onClick={() => setTogglePessoa2(!togglePessoa2)}>P2</button>
+        <button onClick={() => setTogglePessoa3(!togglePessoa3)}>P3</button>
+      </div>
+
+      {togglePessoa1 && <Dashboard pickedColor={'orange'} cpf={score} name={quemEOPica} idade={26}/>}      
+      {togglePessoa2 && <Dashboard  pickedColor={'black'} name={`Guilherme`} cpf={`14931041795`} idade={23}/>}
+      {togglePessoa3 && <Dashboard  name={`Lucas`} cpf={`14931041795`} idade={23}/>}
     </GameContainer>
   )
 }
