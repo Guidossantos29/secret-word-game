@@ -28,7 +28,7 @@ const Game = ({ verifyLetter,pickedCategory,pickedWord,letters,guessedLetters,wr
         <span>Points:{score}</span>
       </p>
       <h1>Adivinhe a Palavra: </h1>
-      <h3>Dica sobre a palavra <span>{pickedCategory}</span></h3>
+      <h3>Dica sobre a palavra:<span>{pickedCategory}</span></h3>
       <p>voce ainda tem {guesses} tentativas</p>
       <LetterContaainer>
       {letters.map((letter, i) =>
